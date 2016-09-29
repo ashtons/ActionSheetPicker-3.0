@@ -147,8 +147,8 @@
 				D66F5006831D8C2E94BAFA4D /* TestTableViewController.h */,
 				9691A8995255E329AAABAA07 /* AbstractActionSheetPicker+CustomButton.m */,
 				9691ABB7429A0D6A2F235006 /* AbstractActionSheetPicker+CustomButton.h */,
-				D66F572853325E5592CF945B /* ActionSheetPickerTableViewController.m */,
 				D66F5954E97888BB98D46969 /* ActionSheetPickerTableViewController.h */,
+				D66F572853325E5592CF945B /* ActionSheetPickerTableViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

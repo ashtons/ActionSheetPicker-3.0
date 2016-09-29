@@ -236,7 +236,13 @@ CG_INLINE BOOL isIPhone4() {
 #pragma mark - Actions
 
 - (void)showActionSheetPicker {
-    UIView *masterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.viewSize.width, 260)];
+    self.pickerView = [self configuredPickerView];
+    CGFloat pickerHeight = 216;
+    if (![_pickerView isKindOfClass:[UIPickerView class]] && ![_pickerView isKindOfClass:[UIDatePicker class]]) {
+        pickerHeight = IS_IPAD ? 476 : 260;
+    }
+    
+    UIView *masterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.viewSize.width, pickerHeight)];
 
     // to fix bug, appeared only on iPhone 4 Device: https://github.com/skywinder/ActionSheetPicker-3.0/issues/5
     if (isIPhone4()) {
@@ -244,7 +250,8 @@ CG_INLINE BOOL isIPhone4() {
     }
     self.toolbar = [self createPickerToolbarWithTitle:self.title];
     [masterView addSubview:self.toolbar];
-
+    
+    
     //ios7 picker draws a darkened alpha-only region on the first and last 8 pixels horizontally, but blurs the rest of its background.  To make the whole popup appear to be edge-to-edge, we have to add blurring to the remaining left and right edges.
     if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
         CGRect rect = CGRectMake(0, self.toolbar.frame.origin.y, _borderWidth, masterView.frame.size.height - self.toolbar.frame.origin.y);
@@ -259,7 +266,7 @@ CG_INLINE BOOL isIPhone4() {
         [masterView insertSubview:rightEdge atIndex:0];
     }
 
-    self.pickerView = [self configuredPickerView];
+    
     NSAssert(_pickerView != NULL, @"Picker view failed to instantiate, perhaps you have invalid component data.");
     // toolbar hidden remove the toolbar frame and update pickerview frame
     if (self.toolbar.hidden) {

@@ -27,10 +27,12 @@
 
 
 #import <CoreActionSheetPicker/ActionSheetDatePicker.h>
+#import <CoreActionSheetPicker/ActionSheetTablePicker.h>
 #import "ActionSheetPickerViewController.h"
 #import "NSDate+TCUtils.h"
 #import "ActionSheetPickerCustomPickerDelegate.h"
 #import "TestTableViewController.h"
+
 
 @interface ActionSheetPickerViewController ()
 - (void)measurementWasSelectedWithBigUnit:(NSNumber *)bigUnit smallUnit:(NSNumber *)smallUnit element:(id)element;
@@ -205,6 +207,8 @@
 }
 
 - (IBAction)selectAnAnimal:(UIControl *)sender {
+    
+    
     [ActionSheetStringPicker showPickerWithTitle:@"Select Animal" rows:self.animals initialSelection:self.selectedIndex target:self successAction:@selector(animalWasSelected:element:) cancelAction:@selector(actionPickerCancelled:) origin:sender];
 
 }
