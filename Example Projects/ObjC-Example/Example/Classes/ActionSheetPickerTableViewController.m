@@ -27,7 +27,6 @@
 
 
 #import <CoreActionSheetPicker/ActionSheetDatePicker.h>
-#import <CoreActionSheetPicker/ActionSheetTablePicker.h>
 #import "ActionSheetPickerTableViewController.h"
 #import "NSDate+TCUtils.h"
 #import "ActionSheetPickerCustomPickerDelegate.h"
@@ -49,7 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.animals = @[@"Aardvark", @"Beaver", @"Cheetah", @"Deer", @"Elephant", @"Frog", @"Gopher", @"Horse", @"Impala", @"...", @"Zebra",@"Aardvark", @"Beaver", @"Cheetah", @"Deer", @"Elephant", @"Frog", @"Gopher", @"Horse", @"Impala", @"...", @"Zebra",@"Aardvark", @"Beaver", @"Cheetah", @"Deer", @"Elephant", @"Frog", @"Gopher", @"Horse", @"Impala", @"...", @"Zebra"];
+    self.animals = @[@"Aardvark", @"Beaver", @"Cheetah", @"Deer", @"Elephant", @"Frog", @"Gopher", @"Horse", @"Impala", @"...", @"Zebra"];
     self.selectedDate = [NSDate date];
     self.selectedTime = [NSDate date];
 
@@ -208,12 +207,7 @@
 }
 
 - (IBAction)selectAnAnimal:(UIControl *)sender {
-    [ActionSheetTablePicker showPickerWithTitle:@"Table Test" rows:self.animals initialSelection:-1 doneBlock:^(ActionSheetTablePicker *picker, NSInteger selectedIndex, id selectedValue) {
-         self.animalTextField.text = (self.animals)[(NSUInteger) selectedIndex];
-    } cancelBlock:^(ActionSheetTablePicker *picker) {
-        
-    } origin:sender];
-//    [ActionSheetStringPicker showPickerWithTitle:@"Select Animal" rows:self.animals initialSelection:self.selectedIndex target:self successAction:@selector(animalWasSelected:element:) cancelAction:@selector(actionPickerCancelled:) origin:sender];
+    [ActionSheetStringPicker showPickerWithTitle:@"Select Animal" rows:self.animals initialSelection:self.selectedIndex target:self successAction:@selector(animalWasSelected:element:) cancelAction:@selector(actionPickerCancelled:) origin:sender];
 
 }
 
