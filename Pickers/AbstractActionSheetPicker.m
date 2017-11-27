@@ -561,6 +561,17 @@ CG_INLINE BOOL isIPhone4() {
 
     if (strikeWidth < 180) {
         [toolBarItemLabel sizeToFit];
+    }else{
+        [toolBarItemLabel setFrame:CGRectMake(0, 0, self.viewSize.width - 180, 30)];
+        
+        [toolBarItemLabel addConstraint:[NSLayoutConstraint constraintWithItem:toolBarItemLabel
+                                                                     attribute:NSLayoutAttributeWidth
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:nil
+                                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                                    multiplier:1.0
+                                                                      constant:toolBarItemLabel.frame.size.width]];
+        [toolBarItemLabel sizeThatFits:toolBarItemLabel.frame.size];
     }
 
     UIBarButtonItem *buttonLabel = [[UIBarButtonItem alloc] initWithCustomView:toolBarItemLabel];
