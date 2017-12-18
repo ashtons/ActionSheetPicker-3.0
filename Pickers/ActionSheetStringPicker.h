@@ -60,3 +60,4 @@ typedef void(^ActionStringCancelBlock)(ActionSheetStringPicker *picker);
 @property (nonatomic, copy) ActionStringCancelBlock onActionSheetCancel;
 
 @end
+
